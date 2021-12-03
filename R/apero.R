@@ -16,8 +16,11 @@
 #' }
 #' @export
 #' @examples
-#' an_apero <- apero()
-#' an_apero
+#' x <- apero()
+#' x
+#'
+#' x2 <- apero(width = 1, height = 1)
+#' x2
 #' @seealso \code{\link{plot.apero}}, \code{\link{summary.apero}}.
 apero <- function(width = 6, height = 4, min_distance = 1.5, margin = 0.3) {
   stopifnot(
