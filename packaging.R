@@ -3,8 +3,8 @@
 #=============================================================================
 
 # WORKFLOW A: CREATE PACKAGE
-# 1) In RStudio: File -> New Project -> New Directory -> R Package
-#    Enter package name (e.g., apero) and tick "create a git repository".
+# 1) In RStudio: File -> New Project -> New Directory -> New Project
+#    Enter package name as project name and tick "create a git repository".
 # 2) Move "packaging.R" to the new project.
 # 3) Put each user visible function into subfolder "R" as "[functionname].R"
 #    Document them using Roxygen tags. Other functions can be put undocumented
@@ -40,7 +40,7 @@ use_gpl_license(2)
 # use_github_links() # use this if this project is on github
 
 # Your files that do not belong to the package itself (others are added by "use_* function")
-use_build_ignore(c("packaging.R"))
+use_build_ignore(c("^packaging.R$", "[.]Rproj$"), escape = FALSE)
 
 # Required external packages
 use_package("ggplot2")
