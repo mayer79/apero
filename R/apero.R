@@ -1,44 +1,46 @@
 #' Creates Pandemic Apero
 #'
-#' This function creates an apero in a room of given size. Guests stick to a minimum distance of each other.
+#' This function creates an apero in a room of given size. Guests stick to a minimum distance of each other in order to stay safe.
 #'
-#' @param width Width of room.
-#' @param height Height of room.
-#' @param min_distance Minimum distance guests should have from each other.
-#' @param margin How close to the walls do guests stand?
+#' @param room_length Length of room in meter.
+#' @param room_width Width of room in meter.
+#' @param min_distance Minimum distance in meter guests should have from each other.
+#' @param margin How close to the walls do guests stand (in meter)?
 #' @return An object of type 'apero' with the following elements:
 #' \itemize{
-#'   \item \code{width}: User input.
-#'   \item \code{height}: User input.
+#'   \item \code{room_length}: User input.
+#'   \item \code{room_width}: User input.
 #'   \item \code{min_distance}: User input.
 #'   \item \code{margin}: User input.
-#'   \item \code{guests}: \code{data.frame} with x and y coordinates of guests.
+#'   \item \code{guests}: \code{data.frame} with x and y coordinates of guests (incl. you).
 #' }
 #' @export
 #' @examples
 #' x <- apero()
 #' x
 #'
-#' x2 <- apero(width = 1, height = 1)
+#' x2 <- apero(1, 1)
 #' x2
 #' @seealso \code{\link{plot.apero}}, \code{\link{summary.apero}}.
-apero <- function(width = 6, height = 4, min_distance = 1.5, margin = 0.3) {
+apero <- function(room_length = 6, room_width = 4,
+                  min_distance = 1.5, margin = 0.3) {
   stopifnot(
-    "height must be positive" = height > 0,
-    "width must be positive" = width > 0,
+    "room_length must be positive" = room_length > 0,
+    "room_width must be positive" = room_width > 0,
     "margin can't be negative" = margin >= 0,
-    "margin can't be larger than height or width" = margin < min(height, width)
+    "margin can't be larger than half of the room height or width" =
+      margin < min(room_length, room_width) / 2
   )
 
-  x <- seq(-width / 2 + margin, width / 2 - margin, by = min_distance)
-  y <- seq(-height / 2 + margin, height / 2 - margin, by = min_distance)
+  x <- seq(-room_length/2 + margin, room_length/2 - margin, by = min_distance)
+  y <- seq(-room_width/2 + margin, room_width/2 - margin, by = min_distance)
 
-  shift_right <- (width / 2 - margin - max(x)) / 2
-  shift_up <- (height / 2 - margin - max(y)) / 2
+  shift_right <- (room_length/2 - margin - max(x)) / 2
+  shift_up <- (room_width/2 - margin - max(y)) / 2
 
   out <- list(
-    width = width,
-    height = height,
+    room_length = room_length,
+    room_width = room_width,
     min_distance = min_distance,
     margin = margin,
     guests = expand.grid(x = x + shift_right, y = y + shift_up)

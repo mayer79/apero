@@ -42,8 +42,8 @@ use_gpl_license(2)
 use_build_ignore(c("packaging.R"))
 
 # Required external packages
+use_package("ggplot2")
 use_package("emojifont")
-use_package("graphics")
 
 # If your code uses the pipe operator %>%
 # use_pipe()

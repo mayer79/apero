@@ -11,14 +11,15 @@
 #' x <- apero()
 #' summary(x)
 #'
-#' x2 <- apero(width = 1, height = 1)
+#' x2 <- apero(2, 1)
 #' summary(x2)
 summary.apero <- function(x, ...) {
   print(x)
-  if (clinks(x) == 0L) {
-    cat("There wont be any clink. Lucky glass...")
+  nclinks <- clinks(x)
+  if (nclinks == 0L) {
+    cat("There won't be any clink. Lucky glass...")
   } else {
-    cat("There will be", clinks(x), "clinks. Poor glasses...")
+    cat("There will be", nclinks, "clinks. Poor glasses...")
   }
-  invisible(clinks)
+  invisible(nclinks)
 }

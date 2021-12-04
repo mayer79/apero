@@ -11,15 +11,18 @@
 #' x <- apero()
 #' x
 #'
-#' x2 <- apero(width = 1, height = 1)
+#' x2 <- apero(1, 1)
 #' x2
 print.apero <- function(x, ...) {
   n <- nrow(x$guests)
 
+  cat("The apero takes place in a ", x$room_length, "m x ", x$room_width,
+      "m room and the safety distance is ", x$min_distance, "m.\n", sep = "")
   if (n == 1L) {
-    cat("Oh no, you are all alone! Next time, book a larger room.\n")
+    cat("Oh no, you are all alone - the room is simply too small!\n",
+    "At least you are not at risk catching a virus...\n")
   } else {
-    cat("A whopping number of", n, "guests are here. Nice apero so far!\n")
+    cat("A whopping", n, "guests are here (incl. you). Nice apero so far!\n")
   }
   invisible(x)
 }
