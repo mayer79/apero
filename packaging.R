@@ -56,7 +56,7 @@ use_package("emojifont")
 use_readme_md()
 
 # Longer docu in RMarkdown (with running R code). Often quite similar to readme.
-# use_vignette("apero")            # Change name
+# use_vignette("apero")
 
 # If you want to add unit tests
 # use_testthat()
