@@ -4,7 +4,7 @@
 
 # WORKFLOW A: CREATE PACKAGE
 # 1) In RStudio: File -> New Project -> New Directory -> R Package
-#    Enter package name (e.g., apero) and tick "initialize with git".
+#    Enter package name (e.g., apero) and tick "create a git repository".
 # 2) Move "packaging.R" to the new project.
 # 3) Put each user visible function into subfolder "R" as "[functionname].R"
 #    Document them using Roxygen tags. Other functions can be put undocumented
