@@ -32,7 +32,8 @@ use_description(
     Description = "This package shows how to have apero during pandemics.",
     `Authors@R` = "person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre'))",
     Depends = "R (>= 3.1.0)",
-    Maintainer = "Michael Mayer <mayermichael79@gmail.com>"),
+    Maintainer = "Michael Mayer <mayermichael79@gmail.com>",
+    LazyData = NULL),    # change to TRUE if there is data in your package
   roxygen = TRUE)
 
 use_gpl_license(2)
@@ -59,7 +60,7 @@ use_readme_md()
 
 # If you want to add unit tests
 # use_testthat()
-# use_test("create")               # Ideally one "use_test" per file in folder "R"
+# use_test("apero")               # Ideally one "use_test" per file in folder "R"
 # ...
 
 # On top of NEWS.md, describe changes made to the package
@@ -74,13 +75,13 @@ use_news_md()
 
 library(devtools)
 
-document()                           # Create documentation from Roxygen tags (@param etc.)
-# test()                               # Run unit tests
-# build_vignettes()                    # Build vignette (it will be put into "doc/")
-check(vignettes = FALSE)             # Run package checks. No errors or warnings should be left.
-build()                              # Create tag.gz package in parent(!) folder
-build(binary = TRUE)                 # Create zip (for useres without RTools)
-install()                            # Install package on your machine
+document()
+# test()
+# build_vignettes()
+check(vignettes = FALSE)
+build()
+build(binary = TRUE)
+install()
 
 # Run only if package is public(!) and should go to CRAN
 if (FALSE) {

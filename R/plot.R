@@ -3,7 +3,7 @@
 #' Plot method for an object of class \code{apero}.
 #'
 #' @import ggplot2
-#' @importFrom emojifont emoji
+#' @importFrom emojifont emoji load.emojifont
 #' @param x An object of class \code{apero}.
 #' @param emo An emoji, e.g., "beer", "drink", "syringe", "wine_glass". Try emojifont::search_emoji("glass", approximate = TRUE) etc.
 #' @param size Size of emoji.
@@ -13,6 +13,7 @@
 #' @method plot apero
 #' @export
 #' @examples
+#' \dontrun{
 #' x <- apero()
 #' x
 #' plot(x)
@@ -20,7 +21,10 @@
 #'
 #' x2 <- apero(2, 1)
 #' plot(x2)
-plot.apero <- function(x, emo = "beer", size = 12, color = "orange", ...) {
+#' }
+plot.apero <- function(x, emo = "beer", size = 8, color = "orange", ...) {
+  load.emojifont()
+  xmin <- xmax <- ymin <- ymax <- y <- NULL
   ggplot() +
     geom_rect(
       aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
@@ -32,10 +36,11 @@ plot.apero <- function(x, emo = "beer", size = 12, color = "orange", ...) {
     ) +
     geom_text(aes(x = x, y = y), x$guests,
               label = emoji(emo), size = size,
-              family="EmojiOne", color = color, ...) +
+              family="EmojiOne",
+              color = color, ...) +
     scale_y_continuous(expand = c(0, 0)) +
     scale_x_continuous(expand = c(0, 0)) +
-    theme_minimal(base_size = 12) +
+    theme_minimal() +
     coord_equal() +
     labs(
       title = paste(

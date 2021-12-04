@@ -2,7 +2,7 @@
 #'
 #' Summary method for an object of class \code{apero}.
 #'
-#' @param x An object of class \code{apero}.
+#' @param object An object of class \code{apero}.
 #' @param ... Further arguments passed from other methods.
 #' @return Invisibly, the number of clinks is returned.
 #' @method summary apero
@@ -13,9 +13,9 @@
 #'
 #' x2 <- apero(2, 1)
 #' summary(x2)
-summary.apero <- function(x, ...) {
-  print(x)
-  nclinks <- clinks(x)
+summary.apero <- function(object, ...) {
+  print(object)
+  nclinks <- clinks(object)
   if (nclinks == 0L) {
     cat("There won't be any clink. Lucky glass...")
   } else {
