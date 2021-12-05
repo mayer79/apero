@@ -43,9 +43,9 @@ plot.apero <- function(x, emo = "beer", size = 8, color = "orange", ...) {
     theme_minimal() +
     coord_equal() +
     labs(
-      title = paste(
-        "Apero with", nrow(x$guests),
-        "guests (incl. you) and a safety distance of",
+      title = paste0(
+        "Apero with ", nrow(x$guests),
+        " persons and a safety distance of ",
         x$min_distance, "m"
       ),
       x = paste0("Length of the room: ", x$room_length, "m"),
@@ -55,6 +55,7 @@ plot.apero <- function(x, emo = "beer", size = 8, color = "orange", ...) {
       panel.grid.major = element_blank(),
       panel.grid.minor = element_blank(),
       axis.text = element_blank(),
-      axis.ticks = element_blank()
+      axis.ticks = element_blank(),
+      plot.title = element_text(size = 12)
     )
 }

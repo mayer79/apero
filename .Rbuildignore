@@ -3,3 +3,5 @@
 [.]Rproj$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^doc$
+^Meta$

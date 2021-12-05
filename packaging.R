@@ -56,28 +56,27 @@ use_package("emojifont")
 use_readme_md()
 
 # Longer docu in RMarkdown (with running R code). Often quite similar to readme.
-# use_vignette("apero")
+use_vignette("apero")
 
 # If you want to add unit tests
-# use_testthat()
-# use_test("apero")               # Ideally one "use_test" per file in folder "R"
-# ...
+use_testthat()
+use_test("clinks")
+use_test("plot")
+# use_test("apero")
 
 # On top of NEWS.md, describe changes made to the package
 use_news_md()
 
-# To finish this part: Open DESCRIPTION. Does it make sense?
-
 
 #=============================================================================
-# Finish package building
+# Finish package building (can use fresh session)
 #=============================================================================
 
 library(devtools)
 
 document()
-# test()
-# build_vignettes()
+test()
+build_vignettes()
 check(vignettes = FALSE)
 build()
 build(binary = TRUE)
