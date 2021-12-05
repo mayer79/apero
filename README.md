@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The "apero" package has three purposes:
+The "apero" package has three purposes. The last one of course is purely recreational and not at all serious.
 
 1. Its "packaging.R" script explains how to build a simple package using "usethis" and "devtools".
 2. It shows how to use S3 object oriented programming.
