@@ -67,6 +67,8 @@ use_test("plot")
 # On top of NEWS.md, describe changes made to the package
 use_news_md()
 
+# If package should go to CRAN, message to maintainers (what checks were done, ...)
+use_cran_comments()
 
 #=============================================================================
 # Finish package building (can use fresh session)
@@ -84,7 +86,6 @@ install()
 
 # Run only if package is public(!) and should go to CRAN
 if (FALSE) {
-  use_cran_comments()                # Write something to CRAN, including what type checks were done.
   check_win_devel()
   check_rhub()
 
