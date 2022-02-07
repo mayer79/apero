@@ -28,23 +28,21 @@ use_description(
   fields = list(
     Title = "Apero",    # Change
     Version = "0.1.0",  # Increase when updating
-    Date = Sys.Date(),
     Description = "This package shows how to have apero during pandemics.",
     `Authors@R` = "person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre'))",
     Depends = "R (>= 3.1.0)",
-    Maintainer = "Michael Mayer <mayermichael79@gmail.com>",
     LazyData = NULL),    # change to TRUE if there is data in your package
   roxygen = TRUE)
+
+# Required external packages
+use_package("ggplot2")
+use_package("emojifont")
 
 use_gpl_license(2)
 # use_github_links() # use this if this project is on github
 
 # Your files that do not belong to the package itself (others are added by "use_* function")
-use_build_ignore(c("^packaging.R$", "[.]Rproj$"), escape = FALSE)
-
-# Required external packages
-use_package("ggplot2")
-use_package("emojifont")
+use_build_ignore(c("^packaging.R$", "[.]Rproj$", "^RPackage_en.pptx$"), escape = FALSE)
 
 # If your code uses the pipe operator %>%
 # use_pipe()
@@ -81,7 +79,7 @@ test()
 build_vignettes()
 check(vignettes = FALSE)
 build()
-build(binary = TRUE)
+# build(binary = TRUE)
 install()
 
 # Run only if package is public(!) and should go to CRAN

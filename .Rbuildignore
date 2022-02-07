@@ -1,6 +1,8 @@
 ^LICENSE\.md$
 ^packaging.R$
 [.]Rproj$
+^RPackage_en.pptx$
+^cran-comments\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^doc$
