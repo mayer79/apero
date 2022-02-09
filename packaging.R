@@ -37,14 +37,13 @@ use_description(
 )
 
 # Required external packages
-use_package("ggplot2")
-use_package("emojifont")
+use_package("ggplot2", type = "Imports")
+use_package("emojifont", type = "Imports")
 
 use_gpl_license(2)
-# use_github_links() # use this if this project is on github
 
 # Your files that do not belong to the package itself
-# (others are added by "use_* function")
+# (more are being added by "use_* function")
 use_build_ignore(
   c("^packaging.R$", "[.]Rproj$", "^RPackage_en.pptx$"),
   escape = FALSE
@@ -59,7 +58,7 @@ use_build_ignore(
 # Add short docu in Markdown (without running R code)
 use_readme_md()
 
-# Longer docu in RMarkdown (with running R code). Often quite similar to readme.
+# Optional: longer docu in RMarkdown (with running R code)
 use_vignette("apero")
 
 # If you want to add unit tests
@@ -68,10 +67,13 @@ use_test("clinks")
 # use_test("apero")
 # use_test("methods")
 
-# On top of NEWS.md, describe changes made to the package
+# If this project is on github
+# use_github_links()
+
+# Describe changes made to the package (newest first)
 use_news_md()
 
-# If package should go to CRAN, message to maintainers (what checks were done, ...)
+# If package should go to CRAN, message with check results etc.
 use_cran_comments()
 
 #=============================================================================
