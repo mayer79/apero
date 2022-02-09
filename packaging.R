@@ -5,9 +5,9 @@
 # WORKFLOW A: CREATE PACKAGE
 # 1) In RStudio: File -> New Project -> New Directory -> New Project
 #    Enter package name as project name and tick "create a git repository".
-# 2) Move "packaging.R" to the new project.
-# 3) Put each user visible function into subfolder "R" as "[functionname].R"
-#    Document them using Roxygen tags. Other functions can be put undocumented
+# 2) Move this file to the new project folder.
+# 3) Put R scripts in subfolder "R". Document user visible functions
+#    with Roxygen. Other functions can be put without roxygen tags, e.g.,
 #    into R/utils.R or below any of the documented functions.
 # 4) Go through this script and modify it as desired.
 
@@ -15,7 +15,7 @@
 # 1) Modify package content and documentation.
 # 2) Increase package number in "use_description" below.
 # 3) Go through this script and carefully answer "no" if a "use_*" function
-#    asks to overwrite the existing files. Or just skip that function call.
+#    asks to overwrite the existing files. Don't skip these.
 
 #=============================================================================
 # Put together the package
@@ -26,13 +26,15 @@ library(usethis)
 # Sketch of description file
 use_description(
   fields = list(
-    Title = "Apero",    # Change
-    Version = "0.1.0",  # Increase when updating
+    Title = "Apero",
+    Version = "0.1.0",
     Description = "This package shows how to have apero during pandemics.",
     `Authors@R` = "person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre'))",
     Depends = "R (>= 3.1.0)",
-    LazyData = NULL),    # change to TRUE if there is data in your package
-  roxygen = TRUE)
+    LazyData = NULL
+  ),
+  roxygen = TRUE
+)
 
 # Required external packages
 use_package("ggplot2")
@@ -41,8 +43,12 @@ use_package("emojifont")
 use_gpl_license(2)
 # use_github_links() # use this if this project is on github
 
-# Your files that do not belong to the package itself (others are added by "use_* function")
-use_build_ignore(c("^packaging.R$", "[.]Rproj$", "^RPackage_en.pptx$"), escape = FALSE)
+# Your files that do not belong to the package itself
+# (others are added by "use_* function")
+use_build_ignore(
+  c("^packaging.R$", "[.]Rproj$", "^RPackage_en.pptx$"),
+  escape = FALSE
+)
 
 # If your code uses the pipe operator %>%
 # use_pipe()
@@ -59,8 +65,8 @@ use_vignette("apero")
 # If you want to add unit tests
 use_testthat()
 use_test("clinks")
-use_test("plot")
 # use_test("apero")
+# use_test("methods")
 
 # On top of NEWS.md, describe changes made to the package
 use_news_md()
