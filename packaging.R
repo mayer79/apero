@@ -5,7 +5,8 @@
 # WORKFLOW A: CREATE PACKAGE
 # 1) In RStudio: File -> New Project -> New Directory -> New Project
 #    Enter package name as project name and tick "create a git repository".
-# 2) Move this file to the new project folder.
+#    Use a local folder, not on a linked network drive.
+# 2) Move this file ("packaging.R") to the new project folder.
 # 3) Put R scripts in subfolder "R". Document user visible functions
 #    with Roxygen. Other functions can be put without roxygen tags, e.g.,
 #    into R/utils.R or below any of the documented functions.
