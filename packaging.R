@@ -16,13 +16,16 @@
 # 1) Modify package content and documentation.
 # 2) Increase package number in "use_description" below.
 # 3) Go through this script and carefully answer "no" if a "use_*" function
-#    asks to overwrite the existing files. Don't skip these.
+#    asks to overwrite existing files. If only the R functions have been
+#    changed, this part can be skipped and you can directly jump 
+#    to the devtools part.
 
 #=============================================================================
 # Put together the package
 #=============================================================================
 
 library(usethis)
+# devtools::load_all()
 
 # Sketch of description file
 use_description(
@@ -68,14 +71,14 @@ use_test("clinks")
 # use_test("apero")
 # use_test("methods")
 
-# If this project is on github
-# use_github_links()
-
 # Describe changes made to the package (newest first)
 use_news_md()
 
 # If package should go to CRAN, message with check results etc.
 use_cran_comments()
+
+# If this project is on github
+# use_github_links()
 
 #=============================================================================
 # Finish package building (can use fresh session)
@@ -85,8 +88,7 @@ library(devtools)
 
 document()
 test()
-build_vignettes()
-check(vignettes = FALSE)
+check(manual = TRUE, cran = TRUE, quiet = TRUE)
 build()
 # build(binary = TRUE)
 install()
@@ -98,5 +100,5 @@ if (FALSE) {
 
   # Wait until above checks are passed without relevant notes/warnings
   # then submit to CRAN
-  devtools::release()
+  release()
 }
