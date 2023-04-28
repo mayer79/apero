@@ -1,0 +1,308 @@
+%% PRESENTATION MODE
+\documentclass[
+    utf8,
+    aspectratio=169
+]{beamer}  % We could consider beamerswitch.
+%% ARTICLE MODE
+%\documentclass[utf8]{article} \usepackage{beamerarticle}
+
+%%% 1. Praeambulum
+% Siehe http://www.staff.uni-giessen.de/partosch/unterlagen/Abschlussarbeit-Anleitung.pdf
+\usepackage[english]{babel}
+\usepackage[%
+	backend=biber, %biber would be better, but doesn't work for me so far
+	%backend=bibtex8,  %use this backend if biber does not work
+	%style=authoryear
+	style=numeric,
+	maxbibnames=99
+	]{biblatex} % Literaturverzeichnis und Zitation
+\usepackage{booktabs} % "schoene" Tabellen ermoeglichen
+\usepackage[T1]{fontenc} % interne Font-Generierung
+\usepackage[hang]{footmisc} % haengende Fussnoten
+\usepackage{graphicx} % Abbildungen ermoeglichen
+%\usepackage[utf8]{inputenc} % Codierung der Eingabe, set as option in beamer documentclass
+\usepackage[scaled]{beramono} % for typewriter family (ttfamily) as used in listings
+\usepackage{lmodern} % Schriftfamilie Latin Modern. Als letzten Schrift laden, damit es die aktive ist.
+%\usepackage{longtable} % "lange" Tabellen ermoeglichen
+%\usepackage{makeidx} % Index ermoeglichen
+\usepackage{textcomp} % zusaetzliche LaTeX-Sonderzeichen
+ \usepackage{hyperref} % Hypertextstrukturen ermoeglichen, automatically loaded by beamer
+%\usepackage{refcheck} % Mit diesem Paket kann man pruefen, ob alle gesetzten Gleichungen auch referenziert werden. Man kann es aber nicht gleichzeitig mit hyperref nutzen.
+%\usepackage{xurl} % url mit Umbrücken, am besten nach biblatex laden
+\usepackage[babel]{csquotes} % "schoene" Anfuehrungszeichen
+\usepackage{xspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{xfrac}
+\usepackage{siunitx}
+%\usepackage[most]{tcolorbox}
+%\usepackage{etoolbox}
+\usepackage{dsfont}
+\usepackage{tabularx}
+%\usepackage{xparse}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{amsthm}  % automatically loaded by beamer
+%\usepackage{adjustbox}
+%\usepackage[boxruled]{algorithm2e}
+%\usepackage{xargs}
+%%\usepackage{amscd}\usepackage{multirow}
+%%\usepackage{lscape}
+\usepackage{pgfplots}  % Plots mit tikz/pgf
+%\pgfplotsset{compat=1.14}
+%\pgfplotsset{compat=1.16}
+\pgfplotsset{compat=1.18}
+%\usepackage{tikz} % draw graphics, diagrams and boxes
+%\usetikzlibrary{arrows.meta, calc, decorations.text, decorations.pathmorphing, positioning, shapes.misc}
+% overlay-beamer-styles is from package aobs-tikz
+\usetikzlibrary{calc, positioning, shapes.geometric, tikzmark, decorations.pathreplacing, calligraphy, overlay-beamer-styles}
+\usepackage{listings} % verbatim and code style
+\usepackage{fontawesome5}
+%\usepackage{awesomebox} % nice message boxes
+%\usepackage[]{draftwatermark}
+%\SetWatermarkColor[gray]{0.9}
+\usepackage{placeins}  % \FloatBarrier
+%\usepackage[section]{placeins}  % force floating figures before new section
+\usepackage{exercise}
+
+% bib-file for bibliography
+\addbibresource{lecture_slides_Bib.bib}
+
+% Wir wollen Grossbuchstaben für Chapter, Section and Subsection,
+% so wie es für Figure, Table, etc. bereits der Default ist.
+% Siehe Dokumentation for hyperref.
+\addto\extrasenglish{
+    \def\chapterautorefname{Chapter}
+	\def\sectionautorefname{Section}
+	\def\subsectionautorefname{Subsection}
+	\def\subsubsectionautorefname{Subsubsection}
+	\def\paragraphnameautorefname{Paragraph}
+}
+
+
+% Modifikationen am Textsatz und Layout
+% \emph innerhalb einer definition Environment bold statt italic
+% siehe https://tex.stackexchange.com/questions/315058/change-the-behaviour-of-emph-per-environment/330491
+\AtBeginEnvironment{definition}{\renewcommand\eminnershape{\bfseries}}
+
+% If beramono is imported after lmodern, we might want to change some use cases of typewriter back to latin modern type writer.
+% We revert this for some use cases like url links:
+%\renewcommand\UrlFont{\color{cyan}\fontfamily{lmtt}\selectfont} % lmtt is latin modern typewriter
+
+\newcommand{\pkg}[1]{{\normalfont\fontseries{b}\selectfont #1}}
+\let\proglang=\textsf
+\let\code=\texttt
+\let\variable=\texttt
+
+%listings
+% We want to avoid that in "my_log_constant", "log" is highlighted, and therefore remove _ from otherkeywords and from alsoother, see
+% https://tex.stackexchange.com/questions/318841/listings-with-r-keywords-in-variable-names-are-highlighted-when-using-underscor
+\lstset{
+	%basicstyle=\scriptsize\ttfamily,
+	basicstyle=\fontfamily{fvm}\selectfont\scriptsize, % fvm is beramono, see file beramono.sty
+	columns=fixed,
+	numbers=none, %left,
+	%escapeinside=||,
+	breakatwhitespace=true,
+	language=R,
+	otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},
+	alsoother={.$},
+	%deletekeywords={_},
+	frame=tb,
+	tabsize=4 %default is 8
+}
+%%Modify caption type for algorithms2e
+%\makeatletter
+%\renewcommand{\@algocf@capt@plain}{above}% formerly {bottom}
+%\makeatother
+% eigene Vereinbarung:
+\newcommand*{\eg}{e.g.,\@\xspace}
+\newcommand*{\ie}{i.e.\@\xspace}
+\newcommand*{\cf}{cf.\@\xspace}
+\newcommand*{\etc}{etc.\@\xspace}
+\newcommand*{\wrt}{w.r.t.\@\xspace}
+\newcommand*{\iid}{i.i.d.\@\xspace}
+\DeclareMathOperator{\Prob}{\mathbb{P}}
+\DeclareMathOperator{\E}{\mathbb{E}}  % alternative: \mathbf{E}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\P}{\mathbb P}
+\newcommand{\M}{\mathcal M}
+\newcommand{\X}{\mathcal X}
+\newcommand{\Y}{\mathcal Y}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\def\realnumbers{\mathbb{R}}
+
+% Color in math environments
+% https://tex.stackexchange.com/a/261480
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
+\makeatother
+
+
+% Beamer Stuff
+\usetheme{default}
+\useinnertheme{default}
+\useoutertheme{default}
+\setbeamertemplate{navigation symbols}{}  % no navigation at all
+% https://tex.stackexchange.com/a/137028
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+% https://getbootstrap.com/docs/5.0/customize/color/
+% Bootstrap Color Palette
+% blue: #0d6efd
+% indigo: #6610f2
+% purple: #6f42c1 
+% pink: #d63384 
+% red: #dc3545
+% orange: #fd7e14
+% yellow: #ffc107
+% green: #198754
+% teal: #20c997
+% cyan: #0dcaf0 
+% gray-500: #adb5bd
+\definecolor{BCPblue}{HTML}{0d6efd}
+\definecolor{BCPgreen}{HTML}{198754}
+\definecolor{BCPred}{HTML}{dc3545}
+
+%\setbeamercolor{section in toc}{fg=black,bg=white}
+%\setbeamercolor*{palette primary}{fg=darkred!60!black,bg=gray!30!white}
+%\setbeamercolor*{palette secondary}{fg=darkred!70!black,bg=gray!15!white}
+%\setbeamercolor*{palette tertiary}{bg=darkred!80!black,fg=gray!10!white}
+%\setbeamercolor*{palette quaternary}{fg=darkred,bg=gray!5!white}
+\setbeamercolor{structure}{fg=BCPblue} % itemize, enumerate, etc
+\setbeamercolor{example text}{fg=BCPgreen}
+\setbeamercolor{alerted text}{fg=BCPred}
+
+%\setbeamercolor*{sidebar}{fg=darkred,bg=gray!15!white}
+
+%\setbeamercolor*{palette sidebar primary}{fg=darkred!10!black}
+%\setbeamercolor*{palette sidebar secondary}{fg=white}
+%\setbeamercolor*{palette sidebar tertiary}{fg=darkred!50!black}
+%\setbeamercolor*{palette sidebar quaternary}{fg=gray!10!white}
+
+%%\setbeamercolor*{titlelike}{parent=palette primary}
+%\setbeamercolor{titlelike}{parent=palette primary,fg=darkred}
+%\setbeamercolor{frametitle}{bg=gray!10!white}
+%\setbeamercolor{frametitle right}{bg=gray!60!white}
+
+%\setbeamercolor*{separation line}{}
+%\setbeamercolor*{fine separation line}{}
+
+% ToC before each section
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+%%% 2. Documentum
+
+\title{Do it yourself: R Packages}
+\author{Michael Mayer}
+%\institute{}
+\date{October 2022}
+
+%=====================================================================
+\begin{document}
+%=====================================================================
+
+\frame{\titlepage}
+
+% \setcounter{tocdepth}{1}
+% \begin{frame}
+%     \frametitle{Table of Contents}
+%     \tableofcontents
+% \end{frame}
+% \setcounter{tocdepth}{2}
+
+%=====================================================================
+\section{Functions}
+%=====================================================================
+
+\begin{frame}
+	\frametitle{Functions}
+	\begin{columns}
+		\column{0.55\textwidth}
+		\begin{itemize}
+			\item In R, everything is an object
+			\item Many objects are functions
+			
+			$\rightarrow$ {\texttt t.test}, {\texttt +}, {\texttt parenthesis}
+			\item R Packages mainly consist of functions
+			\item Define own functions 
+			
+			$rightarrow$ structures code and improves maintainability
+		\end{itemize}
+
+		\begin{block}{Examples (bad and good)}
+do something
+		\end{block}
+		\column{0.4\textwidth}
+		\begin{figure}
+			\includegraphics[width=0.95\textwidth]{pics/iris.pdf}
+		\end{figure}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Final Words}
+	\begin{columns}
+		\column{0.55\textwidth}
+		\begin{block}{In R code of package,}
+			\begin{itemize}
+				\item never use {\texttt source()}, {\texttt setwd()},{\texttt library()}, {\texttt require()}
+				\item use defensive programming
+				\item test your code, e.g., by sharing it with someone else
+			\end{itemize}
+		\end{block}
+	
+	Everything on https://github.com/mayer79/apero
+	devtools::install_github("mayer79/apero")
+	
+		\begin{itemize}
+			\item In R, everything is an object
+			\item Many objects are functions
+			
+			$\rightarrow$ {\texttt t.test}, {\texttt +}, {\texttt parenthesis}
+			\item R Packages mainly consist of functions
+			\item Define own functions 
+			
+			$rightarrow$ structures code and improves maintainability
+		\end{itemize}
+		
+		\begin{block}{Examples (bad and good)}
+			do something
+		\end{block}
+		\column{0.4\textwidth}
+		\begin{block}{Hadley's book}
+			\begin{itemize}
+				\item Free online
+				\item \url{https://r-pkgs.org/}
+			\end{itemize}
+			\begin{figure}
+				\includegraphics[width=0.65\textwidth]{pics/hadley.png}
+			\end{figure}
+			\end{block}
+	\end{columns}
+\end{frame}
+
+
+%=====================================================================
+\end{document}
+%=====================================================================
