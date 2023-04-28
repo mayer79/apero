@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/mayer79/apero/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mayer79/apero/actions)
+[![R-CMD-check](https://github.com/mayer79/apero/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/mayer79/apero/actions)
 [![Codecov test coverage](https://codecov.io/gh/mayer79/apero/branch/main/graph/badge.svg)](https://app.codecov.io/gh/mayer79/apero?branch=main)
 
 <!-- badges: end -->
