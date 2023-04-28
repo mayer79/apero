@@ -1,4 +1,4 @@
-# apero
+# {apero}
 
 <!-- badges: start -->
 
@@ -29,6 +29,27 @@ library(apero)
 
 x <- apero()
 summary(x)
+
+> The apero takes place in a 6m x 4m room and the safety distance is 1.5m.
+> A whopping 12 guests are here (incl. you). Nice apero so far!
+> There will be 66 clinks. Poor glasses...
+
 plot(x)
 ```
+
+![](man/figures/README-beer.png)
+
+``` r
+x <- apero(room_length = 1, room_width = 1)
+summary(x)
+
+> The apero takes place in a 1m x 1m room and the safety distance is 1.5m.
+> Oh no, you are all alone - the room is simply too small!
+>  At least you are not at risk catching a virus...
+> There won't be any clink. Lucky glass...
+
+plot(x, emo = "wine_glass", color = "red")
+```
+
+![](man/figures/README-wine.png)
 
