@@ -9,7 +9,8 @@
 \arguments{
 \item{x}{An object of class \code{apero}.}
 
-\item{emo}{An emoji, e.g., "beer", "drink", "syringe", "wine_glass". Try emojifont::search_emoji("glass", approximate = TRUE) etc.}
+\item{emo}{An emoji, e.g., "beer", "drink", "syringe", "wine_glass".
+Try emojifont::search_emoji("glass", approximate = TRUE) etc.}
 
 \item{size}{Size of emoji.}
 
@@ -21,10 +22,9 @@
 A "ggplot" object.
 }
 \description{
-Plot method for an object of class \code{apero}.
+Plot method for an object of class "apero".
 }
 \examples{
-\dontrun{
 x <- apero()
 x
 plot(x)
@@ -32,5 +32,4 @@ plot(x, emo = "syringe", color = "red")
 
 x2 <- apero(2, 1)
 plot(x2)
-}
 }

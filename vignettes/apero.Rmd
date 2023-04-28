@@ -14,9 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Introduction
+## Overview
 
-The "apero" package has three purposes. The last one of course is purely recreational and not at all serious.
+The {apero} package has three purposes. The last one of course is purely recreational and not at all serious.
 
 1. Its "packaging.R" script explains how to build a simple package using "usethis" and "devtools".
 2. It shows how to use S3 object oriented programming.
@@ -24,36 +24,28 @@ The "apero" package has three purposes. The last one of course is purely recreat
 
 ## Installation
 
-You can install the released version of apero from github with:
-
 ``` r
 library(devtools)
 install_github("mayer79/apero", dependencies = TRUE)
 ```
 
-## Basic usage 
+## Usage 
 
-```{r setup}
-library(apero)
-```
+### Example 1
 
 ```{r fig.width = 7}
+library(apero)
+
 x <- apero()
-
 summary(x)
-
 plot(x)
-
 plot(x, emo = "wine_glass", color = "red")
 ```
 
-### Another example
+### Example 2
 
 ```{r fig.width = 7}
 x <- apero(room_length = 2, room_width = 1)
-
 summary(x)
-
 plot(x)
-
 ```

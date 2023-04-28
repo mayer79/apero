@@ -7,7 +7,7 @@
 \method{summary}{apero}(object, ...)
 }
 \arguments{
-\item{object}{An object of class \code{apero}.}
+\item{object}{An object of class "apero".}
 
 \item{...}{Further arguments passed from other methods.}
 }
@@ -15,7 +15,7 @@
 Invisibly, the number of clinks is returned.
 }
 \description{
-Summary method for an object of class \code{apero}.
+Summary method for an object of class "apero".
 }
 \examples{
 x <- apero()
