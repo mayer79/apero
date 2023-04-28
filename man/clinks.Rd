@@ -13,7 +13,8 @@ clinks(object, ...)
 \method{clinks}{apero}(object, ...)
 }
 \arguments{
-\item{object}{An object of class \code{apero} or a vector of length one with the number of persons.}
+\item{object}{An object of class \code{apero} or a vector of length one with the
+number of persons.}
 
 \item{...}{Arguments passed from or to other methods.}
 }
@@ -25,11 +26,11 @@ Counts the number of glass clinks.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{default}: Calculates the number of glass clinks between n (= object) persons.
+\item \code{clinks(default)}: Calculates the number of glass clinks between n (= object) persons.
 
-\item \code{apero}: Calculates the number of glass clinks of all persons of an apero.
+\item \code{clinks(apero)}: Calculates the number of glass clinks of all persons of an apero.
+
 }}
-
 \examples{
 x <- apero()
 clinks(x)

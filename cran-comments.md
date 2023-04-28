@@ -1,5 +1,18 @@
-## R CMD check results
+Dear CRAN team
 
-0 errors | 0 warnings | 1 note
+This release adds
 
-* This is a new release.
+- feature 1
+- feature 2
+- ...
+
+## Checks
+
+### R CMD check
+
+### RHub
+
+## Winbuilder
+
+
+

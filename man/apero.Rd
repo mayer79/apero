@@ -26,14 +26,15 @@ An object of type 'apero' with the following elements:
 }
 }
 \description{
-This function creates an apero in a room of given size. Guests stick to a minimum distance of each other in order to stay safe.
+This function creates an apero in a room of given size.
+Guests stick to a minimum distance of each other in order to stay safe.
 }
 \examples{
 x <- apero()
 x
 
 x2 <- apero(1, 1)
-x2
+plot(x2)
 }
 \seealso{
 \code{\link{plot.apero}}, \code{\link{summary.apero}}.

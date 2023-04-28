@@ -1,6 +1,7 @@
 #' Creates Pandemic Apero
 #'
-#' This function creates an apero in a room of given size. Guests stick to a minimum distance of each other in order to stay safe.
+#' This function creates an apero in a room of given size.
+#' Guests stick to a minimum distance of each other in order to stay safe.
 #'
 #' @param room_length Length of room in meter.
 #' @param room_width Width of room in meter.
@@ -20,7 +21,7 @@
 #' x
 #'
 #' x2 <- apero(1, 1)
-#' x2
+#' plot(x2)
 #' @seealso \code{\link{plot.apero}}, \code{\link{summary.apero}}.
 apero <- function(room_length = 6, room_width = 4,
                   min_distance = 1.5, margin = 0.3) {
@@ -32,11 +33,11 @@ apero <- function(room_length = 6, room_width = 4,
       margin < min(room_length, room_width) / 2
   )
 
-  x <- seq(-room_length/2 + margin, room_length/2 - margin, by = min_distance)
-  y <- seq(-room_width/2 + margin, room_width/2 - margin, by = min_distance)
+  x <- seq(-room_length / 2 + margin, room_length / 2 - margin, by = min_distance)
+  y <- seq(-room_width  / 2 + margin, room_width  / 2 - margin, by = min_distance)
 
-  shift_right <- (room_length/2 - margin - max(x)) / 2
-  shift_up <- (room_width/2 - margin - max(y)) / 2
+  shift_right <- (room_length / 2 - margin - max(x)) / 2
+  shift_up <- (room_width / 2 - margin - max(y)) / 2
 
   out <- list(
     room_length = room_length,

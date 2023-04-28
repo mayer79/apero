@@ -17,7 +17,7 @@
 # 2) Increase package number in "use_description" below.
 # 3) Go through this script and carefully answer "no" if a "use_*" function
 #    asks to overwrite existing files. If only the R functions have been
-#    changed, this part can be skipped and you can directly jump 
+#    changed, this part can be skipped and you can directly jump
 #    to the devtools part.
 
 #=============================================================================
@@ -49,7 +49,7 @@ use_gpl_license(2)
 # Your files that do not belong to the package itself
 # (more are being added by "use_* function")
 use_build_ignore(
-  c("^packaging.R$", "[.]Rproj$", "^RPackage_en.pptx$"),
+  c("^packaging.R$", "[.]Rproj$", "slides/"),
   escape = FALSE
 )
 
@@ -80,6 +80,11 @@ use_cran_comments()
 # If this project is on github
 # use_github_links()
 
+# Github actions
+use_github_action("check-standard")
+use_github_action("test-coverage")
+use_github_action("pkgdown")
+
 #=============================================================================
 # Finish package building (can use fresh session)
 #=============================================================================
@@ -88,7 +93,7 @@ library(devtools)
 
 document()
 test()
-check(manual = TRUE, cran = TRUE, quiet = TRUE)
+check(manual = TRUE, cran = TRUE)
 build()
 # build(binary = TRUE)
 install()

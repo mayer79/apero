@@ -1,11 +1,10 @@
 #' Prints an Apero
 #'
-#' Print method for an object of class \code{apero}.
+#' Print method for an object of class "apero".
 #'
-#' @param x An object of class \code{apero}.
+#' @param x An object of class "apero".
 #' @param ... Further arguments passed from other methods.
 #' @return Invisibly, the input is returned.
-#' @method print apero
 #' @export
 #' @examples
 #' x <- apero()
@@ -31,12 +30,11 @@ print.apero <- function(x, ...) {
 
 #' Summarizes an Apero
 #'
-#' Summary method for an object of class \code{apero}.
+#' Summary method for an object of class "apero".
 #'
-#' @param object An object of class \code{apero}.
+#' @param object An object of class "apero".
 #' @param ... Further arguments passed from other methods.
 #' @return Invisibly, the number of clinks is returned.
-#' @method summary apero
 #' @export
 #' @examples
 #' x <- apero()
@@ -59,20 +57,17 @@ summary.apero <- function(object, ...) {
 
 #' Plots an Apero
 #'
-#' Plot method for an object of class \code{apero}.
+#' Plot method for an object of class "apero".
 #'
-#' @import ggplot2
-#' @importFrom emojifont emoji load.emojifont
 #' @param x An object of class \code{apero}.
-#' @param emo An emoji, e.g., "beer", "drink", "syringe", "wine_glass". Try emojifont::search_emoji("glass", approximate = TRUE) etc.
+#' @param emo An emoji, e.g., "beer", "drink", "syringe", "wine_glass".
+#' Try emojifont::search_emoji("glass", approximate = TRUE) etc.
 #' @param size Size of emoji.
 #' @param color Color of emoji.
 #' @param ... Further arguments passed to \code{geom_text()}.
 #' @return A "ggplot" object.
-#' @method plot apero
 #' @export
 #' @examples
-#' \dontrun{
 #' x <- apero()
 #' x
 #' plot(x)
@@ -80,28 +75,31 @@ summary.apero <- function(object, ...) {
 #'
 #' x2 <- apero(2, 1)
 #' plot(x2)
-#' }
 plot.apero <- function(x, emo = "beer", size = 8, color = "orange", ...) {
-  load.emojifont()
-  xmin <- xmax <- ymin <- ymax <- y <- NULL
-  ggplot() +
-    geom_rect(
-      aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
+  emojifont::load.emojifont()
+  ggplot2::ggplot() +
+    ggplot2::geom_rect(
+      ggplot2::aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
       data = data.frame(
-        xmin = -x$room_length/2, xmax = x$room_length/2,
-        ymin = -x$room_width/2,  ymax = x$room_width/2
+        xmin = -x$room_length / 2, xmax = x$room_length / 2,
+        ymin = -x$room_width / 2,  ymax = x$room_width / 2
       ),
       fill = "grey95"
     ) +
-    geom_text(aes(x = x, y = y), x$guests,
-              label = emoji(emo), size = size,
-              family="EmojiOne",
-              color = color, ...) +
-    scale_y_continuous(expand = c(0, 0)) +
-    scale_x_continuous(expand = c(0, 0)) +
-    theme_minimal() +
-    coord_equal() +
-    labs(
+    ggplot2::geom_text(
+      ggplot2::aes(x = x, y = y),
+      x$guests,
+      label = emojifont::emoji(emo),
+      size = size,
+      family="EmojiOne",
+      color = color,
+      ...
+    ) +
+    ggplot2::scale_y_continuous(expand = c(0, 0)) +
+    ggplot2::scale_x_continuous(expand = c(0, 0)) +
+    ggplot2::theme_minimal() +
+    ggplot2::coord_equal() +
+    ggplot2::labs(
       title = paste0(
         "Apero with ", nrow(x$guests),
         " persons and a safety distance of ",
@@ -110,11 +108,14 @@ plot.apero <- function(x, emo = "beer", size = 8, color = "orange", ...) {
       x = paste0("Length of the room: ", x$room_length, "m"),
       y = paste0("Width of the room: ", x$room_width, "m"),
     ) +
-    theme(
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
-      axis.text = element_blank(),
-      axis.ticks = element_blank(),
-      plot.title = element_text(size = 12)
+    ggplot2::theme(
+      panel.grid.major = ggplot2::element_blank(),
+      panel.grid.minor = ggplot2::element_blank(),
+      axis.text = ggplot2::element_blank(),
+      axis.ticks = ggplot2::element_blank(),
+      plot.title = ggplot2::element_text(size = 12)
     )
 }
+
+# To avoid a note on undefined global variables
+globalVariables(c("xmin", "xmax", "ymin", "ymax", "y"))

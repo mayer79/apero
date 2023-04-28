@@ -7,7 +7,7 @@
 \method{print}{apero}(x, ...)
 }
 \arguments{
-\item{x}{An object of class \code{apero}.}
+\item{x}{An object of class "apero".}
 
 \item{...}{Further arguments passed from other methods.}
 }
@@ -15,7 +15,7 @@
 Invisibly, the input is returned.
 }
 \description{
-Print method for an object of class \code{apero}.
+Print method for an object of class "apero".
 }
 \examples{
 x <- apero()
