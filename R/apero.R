@@ -7,14 +7,13 @@
 #' @param room_width Width of room in meter.
 #' @param min_distance Minimum distance in meter guests should have from each other.
 #' @param margin How close to the walls do guests stand (in meter)?
-#' @return An object of type 'apero' with the following elements:
-#' \itemize{
-#'   \item \code{room_length}: User input.
-#'   \item \code{room_width}: User input.
-#'   \item \code{min_distance}: User input.
-#'   \item \code{margin}: User input.
-#'   \item \code{guests}: \code{data.frame} with x and y coordinates of guests (incl. you).
-#' }
+#' @return An object of class "apero" with the following elements:
+#'
+#' - `room_length`: User input.
+#' - `room_width`: User input.
+#' - `min_distance`: User input.
+#' - `margin`: User input.
+#' - `guests`: data.frame with x and y coordinates of guests (including yourself).
 #' @export
 #' @examples
 #' x <- apero()
@@ -22,7 +21,7 @@
 #'
 #' x2 <- apero(1, 1)
 #' plot(x2)
-#' @seealso \code{\link{plot.apero}}, \code{\link{summary.apero}}.
+#' @seealso [plot.apero], [summary.apero].
 apero <- function(room_length = 6, room_width = 4,
                   min_distance = 1.5, margin = 0.3) {
   stopifnot(

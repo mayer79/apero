@@ -16,13 +16,13 @@ apero(room_length = 6, room_width = 4, min_distance = 1.5, margin = 0.3)
 \item{margin}{How close to the walls do guests stand (in meter)?}
 }
 \value{
-An object of type 'apero' with the following elements:
+An object of class "apero" with the following elements:
 \itemize{
 \item \code{room_length}: User input.
 \item \code{room_width}: User input.
 \item \code{min_distance}: User input.
 \item \code{margin}: User input.
-\item \code{guests}: \code{data.frame} with x and y coordinates of guests (incl. you).
+\item \code{guests}: data.frame with x and y coordinates of guests (including yourself).
 }
 }
 \description{
@@ -37,5 +37,5 @@ x2 <- apero(1, 1)
 plot(x2)
 }
 \seealso{
-\code{\link{plot.apero}}, \code{\link{summary.apero}}.
+\link{plot.apero}, \link{summary.apero}.
 }

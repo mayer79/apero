@@ -59,12 +59,12 @@ summary.apero <- function(object, ...) {
 #'
 #' Plot method for an object of class "apero".
 #'
-#' @param x An object of class \code{apero}.
-#' @param emo An emoji, e.g., "beer", "drink", "syringe", "wine_glass".
-#' Try emojifont::search_emoji("glass", approximate = TRUE) etc.
+#' @param x An object of class "apero".
+#' @param emo An emoji like "beer", "drink", "syringe", "wine_glass".
+#' Use `emojifont::search_emoji("glass", approximate = TRUE)` to find the right word.
 #' @param size Size of emoji.
 #' @param color Color of emoji.
-#' @param ... Further arguments passed to \code{geom_text()}.
+#' @param ... Further arguments passed to `ggplot2::geom_text()`.
 #' @return A "ggplot" object.
 #' @export
 #' @examples

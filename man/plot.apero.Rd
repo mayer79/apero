@@ -7,16 +7,16 @@
 \method{plot}{apero}(x, emo = "beer", size = 8, color = "orange", ...)
 }
 \arguments{
-\item{x}{An object of class \code{apero}.}
+\item{x}{An object of class "apero".}
 
-\item{emo}{An emoji, e.g., "beer", "drink", "syringe", "wine_glass".
-Try emojifont::search_emoji("glass", approximate = TRUE) etc.}
+\item{emo}{An emoji like "beer", "drink", "syringe", "wine_glass".
+Use \code{emojifont::search_emoji("glass", approximate = TRUE)} to find the right word.}
 
 \item{size}{Size of emoji.}
 
 \item{color}{Color of emoji.}
 
-\item{...}{Further arguments passed to \code{geom_text()}.}
+\item{...}{Further arguments passed to \code{ggplot2::geom_text()}.}
 }
 \value{
 A "ggplot" object.
