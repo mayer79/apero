@@ -37,5 +37,5 @@ x2 <- apero(1, 1)
 plot(x2)
 }
 \seealso{
-\link{plot.apero}, \link{summary.apero}.
+\code{\link[=plot.apero]{plot.apero()}}, \code{\link[=summary.apero]{summary.apero()}}.
 }

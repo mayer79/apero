@@ -3,7 +3,7 @@
 #' Counts the number of glass clinks.
 #'
 #' @param object An object of class `apero` or a vector of length one with the
-#' number of persons.
+#'   number of persons.
 #' @param ... Arguments passed from or to other methods.
 #' @return The number of clinks.
 #' @export
